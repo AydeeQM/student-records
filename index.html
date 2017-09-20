@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1>STUDENT RECORDS</h1>
+    <button id="addStudent" onclick="mostrar()">Add Student</button>
+    <button id="print" onclick="print_All(); return false">Print All</button>
+    <button onclick="filtromin(); return false">Update Dropout</button>
+    <button onclick="filtromax(); return false">Run Employabity</button>
+    <div id="estudiante" class="element" style="display: none;">
+        <h2>WELCOME</h2>
+        <form action="">
+            <p>Nombre:<br/>
+            <input id="idname" type="text" name="nombre" /></p>
+            <p>Puntaje TEC:<br/>
+            <input id="idtec" type="number" name="tec" /></p>
+            <p>Puntaje HSE:<br/>
+            <input id="idhse" type="number" name="hse" /></p>
+            <button id="send" class="btn btn-lg btn-primary btn-block submit-btn" type="submit" onclick="listar(); return false">Enviar</button>
+        </form>
+    </div>
+    <div id = "records" style="margin-top: 25px"></div>
+    <script src="assets/js/student.js"></script>
+</body>
+</html>
