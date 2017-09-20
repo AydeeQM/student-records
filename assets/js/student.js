@@ -50,13 +50,21 @@ function print_All() {
 };
 
 function filtromin() {
-    estudiantes.forEach(function (valor, indice, array) {
-        let consulta1 = estudiantes.filter(function (data) {
-            let promediomin = (data.grade_TEC + data.grade_HSE) / 2;
-            return promediomin >= 70;
-        });
-
+    let consulta1 = estudiantes.filter(function (data) {
+        let promediomin = (data.grade_TEC + data.grade_HSE) / 2;
+        return promediomin >= 70;
     });
+    //console.log(consulta1);
+    let html = '';
+    consulta1.forEach(function (valor, indice) {
+        html += 'Nombre: '+ valor.name +'<br>';
+        html += 'Nombre: '+ valor.grade_TEC +'<br>';
+        html += 'Nombre: '+ valor.grade_HSE +'<br>';
+        html += 'Status: Active ' + '<br>';
+        html += '<br><br>';
+    });
+
+    printHTML(html);
 }
 
 function filtromax() {
