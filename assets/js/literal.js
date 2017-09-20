@@ -1,3 +1,10 @@
+'use strict';
+const app = {
+    setup: {
+        estudiantes: undefined,
+    }
+}
+
 function mostrar() {
     $("#estudiante").show();
     $("#send").on('click', function () {
