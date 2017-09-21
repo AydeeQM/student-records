@@ -1,3 +1,4 @@
+'use strict';
 function mostrar() {
     $("#estudiante").show();
     $("#send").on('click', function () {

@@ -1,85 +1,44 @@
 'use strict';
 const app = {
-    setup: {
-        estudiantes: undefined,
-    },
+    estudiantes: [],
 
-    init: function () {
-        app.setup.estudiantes = [];
-        app.mostrar();
-        app.data_form();
-        app.mergeHTML();
-        app.printHTML();
-        app.listar();
-        app.print_All();
-        app.filtromax();
-        app.data_form.prototype.toHTML = function () {
-            let html = '';
-            html += 'Nombre: ' + this.name + '<br>';
-            html += 'Puntaje TEC: ' + this.grade_TEC + '<br>';
-            html += 'Puntaje HSE: ' + this.grade_HSE + '<br>';
-            html += 'Status: Active ' + '<br>';
-            html += '<br><br>';
-            return html;
-        };
-    },
-
-    mostrar: function () {
-        $("#estudiante").show();
-        $("#send").on('click', function () {
-            $("#estudiante").hide();
-        });
-    },
-
-    data_form: function (name, grade_TEC, grade_HSE) {
-        this.name = name;
-        this.grade_TEC = grade_TEC;
-        this.grade_HSE = grade_HSE;
-    },
-
-    mergeHTML: function () {
-        let html = '';
-        for (let i in app.setup.estudiantes) {
-            html += app.setup.estudiantes[i].toHTML();
-        }
-        return html;
-    },
-
-    printHTML: function (html) {
-        document.getElementById('records').innerHTML = '';
-        document.getElementById('records').innerHTML = html;
-    },
-
-    listar: function () {
-        let name = document.getElementById('idname').value;
-        let hse = parseInt(document.getElementById('idtec').value);
-        let tec = parseInt(document.getElementById('idhse').value);
-        let register_alumni = new data_form(name, tec, hse);
-        app.setup.estudiantes.push(register_alumni);
-        printHTML(register_alumni.toHTML());
-    },
-
-    print_All: function () {
-        app.printHTML(app.mergeHTML());
-    },
-
-    filtromin: function () {
-        let consulta1 = estudiantes.filter(function (data) {
-                let promediomin = (data.grade_TEC + data.grade_HSE) / 2;
-                return promediomin >= 70;
+    init: function (){
+        $('#addStudent').click(function(){
+            $("#estudiante").show();
+            $("#send").on('click', function () {
+                $("#estudiante").hide();
             });
-        consulta1.forEach(function (valor, indice, array) {
-            app.printHTML(consulta1[indice]);
         });
+
+        $('#send').click(app.addForm);
+        $('#print').click(app.print_All);
     },
 
-    filtromax: function () {
-        let consulta2 = estudiantes.filter(function (data) {
-            let promediomax = (data.grade_TEC + data.grade_HSE) / 2;
-            return promediomax >= 70;
-        });
-        //console.log(consulta2);
+    addForm: function (){
+        let data = {};
+        let name = $('#idname').val();
+        let grade_tec = parseInt($('#idtec').val());
+        let grade_hse= parseInt($('#idhse').val());
+
+        data.suName= name;
+        data.suTec = grade_tec;
+        data.suHse =  grade_hse;
+
+        app.estudiantes.push(data);
+
+        alert('El estudiante ' + ' ' + data.suName+ ' se ha agregado correctamente');
+        
+        $("#nombre").val('');
+        $("#apell").val('');
+        $("#eldni").val('');
+    },
+
+    print_All: function (){
+        $.grep(app.estudiantes, function(value, index){
+            $("#records").append("Nombre: " + app.setup.estudiantes[index].suName +'<br>'+ 'Puntaje TEC: '+app.setup.estudiantes[index].suTec + "<br>"+'Puntaje HSE: '+app.setup.estudiantes[index].suHse+'<br>'+'<br>');
+            }); 
     }
+    
 
 }
 
