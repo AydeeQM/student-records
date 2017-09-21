@@ -1,45 +1,53 @@
 'use strict';
 const app = {
-    estudiantes: [],
+
+    estudiantes: new Array(),
 
     init: function (){
-        $('#addStudent').click(function(){
-            $("#estudiante").show();
-            $("#send").on('click', function () {
-                $("#estudiante").hide();
-            });
-        });
+        app.setup();
+    },
 
-        $('#send').click(app.addForm);
+    setup: function () {
+        $('#addStudent').click(app.desplega);
+        $('#sendss').click(app.addForm);
         $('#print').click(app.print_All);
+    },
+
+    desplega: function (){
+        $('#estudiante').show();
+        $('#sendss').click(function(){
+            $('#estudiante').hide();
+        });
     },
 
     addForm: function (){
         let data = {};
         let name = $('#idname').val();
         let grade_tec = parseInt($('#idtec').val());
-        let grade_hse= parseInt($('#idhse').val());
+        let grade_hse = parseInt($('#idhse').val());
 
         data.suName= name;
         data.suTec = grade_tec;
         data.suHse =  grade_hse;
 
         app.estudiantes.push(data);
+        console.log(app.estudiantes);
+        //app.estudiantes[app.estudiantes.length] = data;
+        //app.estudiantes = app.estudiantes.concat([data]);
 
-        alert('El estudiante ' + ' ' + data.suName+ ' se ha agregado correctamente');
-        
-        $("#nombre").val('');
-        $("#apell").val('');
-        $("#eldni").val('');
+        //alert('El estudiante ' + ' ' + data.suName+ ' se ha agregado correctamente');
+
+        $("#idname").val('');
+        $("#idtec").val('');
+        $("#idhse").val('');
+
     },
 
     print_All: function (){
         $.grep(app.estudiantes, function(value, index){
-            $("#records").append("Nombre: " + app.setup.estudiantes[index].suName +'<br>'+ 'Puntaje TEC: '+app.setup.estudiantes[index].suTec + "<br>"+'Puntaje HSE: '+app.setup.estudiantes[index].suHse+'<br>'+'<br>');
+            $("#records").append("Nombre: " + app.estudiantes[index].suName +'<br>'+ 'Puntaje TEC: '+app.estudiantes[index].suTec + "<br>"+'Puntaje HSE: '+app.estudiantes[index].suHse+'<br>'+'<br>');
             }); 
     }
-    
-
 }
 
-app.init();
+$(document).ready(app.init);

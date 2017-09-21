@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,25 +12,50 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-    <h1>STUDENT RECORDS</h1>
-    <button id="addStudent" >Add Student</button>
-    <button id="print">Print All</button>
-    <button id="delete">Update Dropout</button>
-    <button id="filmax">Run Employabity</button>
-    <div id="estudiante" class="element" style="display: none;">
-        <h2>WELCOME</h2>
-        <form action="">
-            <p>Nombre:<br/>
-            <input id="idname" type="text" name="nombre" /></p>
-            <p>Puntaje TEC:<br/>
-            <input id="idtec" type="number" name="tec" /></p>
-            <p>Puntaje HSE:<br/>
-            <input id="idhse" type="number" name="hse" /></p>
-            <button id="send" class="btn btn-lg btn-primary btn-block submit-btn" type="submit" onclick="listar(); return false">Enviar</button>
-        </form>
+    <div class="page-header text-center">
+        <h1>STUDENT RECORDS</h1>
     </div>
-    <div id = "records" style="margin-top: 25px"></div>
+    <div class="text-center">
+        <button type="button" class="btn btn-info" id="addStudent">Add Student</button>
+        <button type="button" class="btn btn-info" id="print">Print All</button>
+        <button type="button" class="btn btn-info" id="delete">Update Dropout</button>
+        <button type="button" class="btn btn-info" id="filmax">Run Employabity</button>
+    </div>
+
+    <div id="estudiante" class="text-center container" style="display: none;">
+        <div class="element">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="name" class="col-lg-2 control-label">Nombre</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="idname" placeholder="nombre">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tec" class="col-lg-2 control-label">Puntaje TEC</label>
+                    <div class="col-lg-10">
+                        <input type="number" class="form-control" id="idtec" placeholder="TEC">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tec" class="col-lg-2 control-label">Puntaje HSE</label>
+                    <div class="col-lg-10">
+                        <input type="number" class="form-control" id="idhse" placeholder="HSE">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button id="sendss" type="button" class="btn btn-lg btn-primary btn-block submit-btn">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <div class="container" id="records" style="margin-top: 25px"></div>
     <script src="assets/js/literal.js"></script>
 </body>
+
 </html>
