@@ -37,7 +37,7 @@ const app = {
 
         alert('La estudiante '+ data.suName + ' se ha agregado correctamente');
         $('#consol').empty();
-        $("#consol").append("Nombre: " + data.suName +'<br>'+ 'Puntaje TEC: '+data.suTec + "<br>"+'Puntaje HSE: '+data.suHse+'<br>'+'<br>');
+        $("#consol").append("Nombre: " + data.suName +'<br>'+ 'Puntaje TEC: '+data.suTec + "<br>"+'Puntaje HSE: '+data.suHse+'<br>'+'Status: Active'+'<br>');
 
         $("#idname").val('');
         $("#idtec").val('');
@@ -48,8 +48,29 @@ const app = {
     print_All: function (){
         $.grep(app.estudiantes, function(value, index){
             $('#consol').empty();
-            $("#records").append("Nombre: " + app.estudiantes[index].suName +'<br>'+ 'Puntaje TEC: '+app.estudiantes[index].suTec + "<br>"+'Puntaje HSE: '+app.estudiantes[index].suHse+'<br>'+'<br>');
+            $("#records").append("Nombre: " + app.estudiantes[index].suName +'<br>'+ 'Puntaje TEC: '+app.estudiantes[index].suTec + "<br>"+'Puntaje HSE: '+app.estudiantes[index].suHse+'<br>'+'Status: Active'+'<br>'+'<br>');
             }); 
+    },
+
+    filtromin: function(){
+        let consulta1 = app.estudiantes.filter(function (data) {
+            let promediomin = (data.suTec + data.suHse) / 2;
+            return promediomin >= 70;
+        });
+        console.log(consulta1);
+        $('#records').empty();
+        
+        let html = '';
+        consulta1.forEach(function (valor, indice) {
+            html += 'Nombre: '+ valor.suName+'<br>';
+            html += 'Nombre: '+ valor.suTec +'<br>';
+            html += 'Nombre: '+ valor.suHse+'<br>';
+            html += 'Status: Active ' + '<br>';
+            html += '<br><br>';
+        });
+        
+        $('#records').append(html);
+        
     }
 }
 
