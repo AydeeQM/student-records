@@ -62,9 +62,9 @@ const app = {
         
         let html = '';
         consulta1.forEach(function (valor, indice) {
-            html += 'Nombre: '+ valor.suName+'<br>';
+            html += 'Nombre: '+ valor.suName +'<br>';
             html += 'Nombre: '+ valor.suTec +'<br>';
-            html += 'Nombre: '+ valor.suHse+'<br>';
+            html += 'Nombre: '+ valor.suHse +'<br>';
             html += 'Status: Active ' + '<br>';
             html += '<br><br>';
         });
