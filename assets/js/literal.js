@@ -11,6 +11,8 @@ const app = {
         $('#addStudent').click(app.desplega);
         $('#sendss').click(app.addForm);
         $('#print').click(app.print_All);
+        $('#delete').click(app.filtromin);
+        $('#filmax').click(app.filtromax);
     },
 
     desplega: function (){
@@ -32,10 +34,10 @@ const app = {
 
         app.estudiantes.push(data);
         console.log(app.estudiantes);
-        //app.estudiantes[app.estudiantes.length] = data;
-        //app.estudiantes = app.estudiantes.concat([data]);
 
-        //alert('El estudiante ' + ' ' + data.suName+ ' se ha agregado correctamente');
+        alert('La estudiante '+ data.suName + ' se ha agregado correctamente');
+        $('#consol').empty();
+        $("#consol").append("Nombre: " + data.suName +'<br>'+ 'Puntaje TEC: '+data.suTec + "<br>"+'Puntaje HSE: '+data.suHse+'<br>'+'<br>');
 
         $("#idname").val('');
         $("#idtec").val('');
@@ -45,6 +47,7 @@ const app = {
 
     print_All: function (){
         $.grep(app.estudiantes, function(value, index){
+            $('#consol').empty();
             $("#records").append("Nombre: " + app.estudiantes[index].suName +'<br>'+ 'Puntaje TEC: '+app.estudiantes[index].suTec + "<br>"+'Puntaje HSE: '+app.estudiantes[index].suHse+'<br>'+'<br>');
             }); 
     }
