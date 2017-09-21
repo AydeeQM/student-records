@@ -35,9 +35,12 @@ const app = {
         app.estudiantes.push(data);
         console.log(app.estudiantes);
 
-        alert('La estudiante '+ data.suName + ' se ha agregado correctamente');
+        alert(`La estudiante ${data.suName} se ha agregado correctamente`);
         $('#consol').empty();
-        $("#consol").append("Nombre: " + data.suName +'<br>'+ 'Puntaje TEC: '+data.suTec + "<br>"+'Puntaje HSE: '+data.suHse+'<br>'+'Status: Active'+'<br>');
+        $("#consol").append(`Nombre: ${data.suName}<br>\
+                            Puntaje TEC: ${data.suTec}<br>\
+                            Puntaje HSE: ${data.suHse}<br>\
+                            Status: Active<br>`);
 
         $("#idname").val('');
         $("#idtec").val('');
@@ -48,7 +51,10 @@ const app = {
     print_All: function (){
         $.grep(app.estudiantes, function(value, index){
             $('#consol').empty();
-            $("#records").append("Nombre: " + app.estudiantes[index].suName +'<br>'+ 'Puntaje TEC: '+app.estudiantes[index].suTec + "<br>"+'Puntaje HSE: '+app.estudiantes[index].suHse+'<br>'+'Status: Active'+'<br>'+'<br>');
+            $("#records").append(`Nombre: ${app.estudiantes[index].suName}<br>\
+                                Puntaje TEC: ${app.estudiantes[index].suTec}<br>\
+                                Puntaje HSE: ${app.estudiantes[index].suHse}<br>\
+                                Status: Active<br><br>`);
             }); 
     },
 
